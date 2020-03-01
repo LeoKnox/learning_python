@@ -1,5 +1,12 @@
-<h1>Working on</h1>
+<link rel="stylesheet" href="static/css/styles.css" />
 
+{% include "includes/nav.html" %}
+
+<h1>Working on</h1>
+{% if login %}
 <p>Adding stuff</p>
+{% else %}
+<p><a href="{{ url_for('login') }}">login?</a></p>
+{% endif %}
 
 {% include "includes/footer.html" %}
