@@ -1,2 +1,2 @@
 
-from application import *
+from application import app
