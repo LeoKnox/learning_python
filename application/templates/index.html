@@ -1,8 +1,6 @@
-<head>
-    <link rel="stylesheet" type="text/css" href="static/css/styles.css" />
-</head>
-<body>
-    {% include "includes/nav.html" %}
+{% extends "layout.html" %}
+
+{% block context %}
     <div>
         <h1>Working on</h1>
         {% if login %}
@@ -11,5 +9,4 @@
         <p><a href="{{ url_for('login') }}">login?</a></p>
         {% endif %}
     </div>
-    {% include "includes/footer.html" %}
-</body>
+{% endblock %}
