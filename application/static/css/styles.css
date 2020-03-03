@@ -13,4 +13,11 @@ li {
 li a {
     display: block;
     padding: 8px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.active {
+    background-color: lightgray;
+    color: darkblue;
 }
