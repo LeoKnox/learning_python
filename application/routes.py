@@ -8,8 +8,8 @@ def index():
 
 @app.route("/character")
 def character():
-    characterClass = [{"ClassId":"11", "Characters":"Fighter","Ability":"Sword"},
-        {"ClassId":"22", "Characters":"Wizard","Ability":"Spell"}]
+    characterClass = [{"ClassId":"11", "Classes":"Fighter","Ability":"Sword"},
+        {"ClassId":"22", "Classes":"Wizard","Ability":"Spell"}]
     print(characterClass)
     return render_template("character.html", characterClass=characterClass)
 
