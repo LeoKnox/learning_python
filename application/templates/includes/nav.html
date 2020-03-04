@@ -1,9 +1,10 @@
 <header>
     <nav>
-        <div>
+        <div class="navbar">
             <ul>
-                <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="{{ url_for('character') }}">Character</a></li>
+                <li><a href="{{ url_for('index') }}" class="{% if index %}active{% endif %}">Home</a></li>
+                <li><a href="{{ url_for('character') }}" class="{% if character %}active{% endif %}">Character</a></li>
+                <li><a href="{{ url_for('login') }}" class="{% if login %}active{% endif %}">Login</a></li>
             </ul>
             <br>
         </div>

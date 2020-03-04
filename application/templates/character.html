@@ -7,11 +7,19 @@
             <tr>
                 <th>Class</th>
                 <th>Ability</th>
+                <th>Select</th>
             </tr>
             {% for data in characterClass %}
                 <tr>
                     <td>{{ data["Classes"] }}</td>
                     <td>{{ data["Ability"] }}</td>
+                    <td>
+                        <form action="{{ url_for('selection') }}" method="GET">
+                            <input type="hidden" name="ClassId" value="{{data['ClassId']}}" />
+                            <input type="hidden" name="Classes" value="{{data['Classes']}}" />
+                            <button>Select</button>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         </table>

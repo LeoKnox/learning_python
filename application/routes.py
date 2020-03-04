@@ -1,5 +1,5 @@
 from application import app
-from flask import render_template
+from flask import render_template, request
 
 @app.route("/")
 @app.route("/index")
@@ -13,6 +13,12 @@ def character(cid="11"):
         {"ClassId":"22", "Classes":"Wizard","Ability":"Spell"}]
     print(characterClass)
     return render_template("character.html", characterClass=characterClass, character=True, cid=cid)
+
+@app.route("/selection")
+def selection():
+    ClassId = request.args.get('ClassId')
+    Classes = request.args.get('Classes')
+    return render_template("select.html", data={"ClassId":ClassId, "Classes":Classes})
 
 @app.route("/login")
 def login():
