@@ -14,10 +14,10 @@ def character(cid="11"):
     print(characterClass)
     return render_template("character.html", characterClass=characterClass, character=True, cid=cid)
 
-@app.route("/selection")
+@app.route("/selection", methods = ["GET", "POST"])
 def selection():
-    ClassId = request.args.get('ClassId')
-    Classes = request.args.get('Classes')
+    ClassId = request.form.get('ClassId')
+    Classes = request.form.get('Classes')
     return render_template("select.html", data={"ClassId":ClassId, "Classes":Classes})
 
 @app.route("/login")

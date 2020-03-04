@@ -14,7 +14,7 @@
                     <td>{{ data["Classes"] }}</td>
                     <td>{{ data["Ability"] }}</td>
                     <td>
-                        <form action="{{ url_for('selection') }}" method="GET">
+                        <form action="{{ url_for('selection') }}" method="POST">
                             <input type="hidden" name="ClassId" value="{{data['ClassId']}}" />
                             <input type="hidden" name="Classes" value="{{data['Classes']}}" />
                             <button>Select</button>
