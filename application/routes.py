@@ -26,11 +26,8 @@ def selection():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        if (request.form.get("charName") == "Aelien"):
-            flash("You are in!")
-            return redirect("/index")
-        else:
-            flash("Sorry, errorer defected")
+        flash("You are in!")
+        return redirect("/index")
     return render_template("login.html", title="Loggin' in", form=form, login=True)
 
 @app.route("/api")
