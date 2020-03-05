@@ -1,6 +1,7 @@
 from application import app, db
 from application.models import Character, Room, Dungeon
 from flask import render_template, request, json, Response
+from application.forms import LoginForm, CharacterForm
 
 characterClass = [{"ClassId":"11", "Classes":"Fighter","Ability":"Sword"},
     {"ClassId":"22", "Classes":"Wizard","Ability":"Spell"}]
@@ -21,9 +22,10 @@ def selection():
     Classes = request.form.get('Classes')
     return render_template("select.html", data={"ClassId":ClassId, "Classes":Classes})
 
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
-    return render_template("login.html", login=True)
+    form = LoginForm()
+    return render_template("login.html", title="Loggin' in", form=form, login=True)
 
 @app.route("/api")
 @app.route("/api/<idx>")
