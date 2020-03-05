@@ -1,0 +1,15 @@
+
+{% extends "layout.html" %}
+
+{% block context %}
+    <div>
+        {% for player in players %}
+        <dl>
+            <dt>Character Name: {{ player.char_name }}</dt>
+            <dd>Character Class: {{ player.char_class }}</dd>
+        </dl>
+        {% else %}
+        <h3>No players go get some!</h3>
+        {% endfor %}
+    </div>
+{% endblock %}

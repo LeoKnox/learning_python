@@ -1,4 +1,4 @@
-from application import app
+from application import app, db
 from flask import render_template, request, json, Response
 
 characterClass = [{"ClassId":"11", "Classes":"Fighter","Ability":"Sword"},
@@ -33,3 +33,17 @@ def api(idx=None):
         jdata = characterClass[int(idx)]
 
     return Response(json.dumps(jdata), mimetype="/application/json")
+
+class Character(db.Document):
+    char_id     =   db.IntField( unique=True )
+    char_name   =   db.StringField( max_length=50, unique=True )
+    char_class  =   db.StringField( max_length=20 )
+    atk         =   db.IntField( )
+    ac         =   db.IntField( )
+
+@app.route("/player")
+def player():
+    Character(char_id=1, char_name="Xingu", char_class="Figther",atk=12,ac=11).save()
+    Character(char_id=2, char_name="Eveehi", char_class="Wizard",atk=12,ac=11).save()
+    players = Character.objects.all()
+    return render_template("player.html", players=players)
