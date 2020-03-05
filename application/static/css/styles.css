@@ -45,3 +45,7 @@ th, td {
     background-color: lightgray;
     color: blue;
 }
+
+.err_message {
+    color: red;
+}

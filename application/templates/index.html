@@ -1,5 +1,13 @@
 {% extends "layout.html" %}
 
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p class="err_message">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
 {% block context %}
     <div>
         <h1>Working on</h1>

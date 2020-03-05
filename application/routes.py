@@ -1,6 +1,6 @@
 from application import app, db
 from application.models import Character, Room, Dungeon
-from flask import render_template, request, json, Response
+from flask import render_template, request, json, Response, redirect, flash
 from application.forms import LoginForm, CharacterForm
 
 characterClass = [{"ClassId":"11", "Classes":"Fighter","Ability":"Sword"},
@@ -25,6 +25,12 @@ def selection():
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        if (request.form.get("charName") == "Aelien"):
+            flash("You are in!")
+            return redirect("/index")
+        else:
+            flash("Sorry, errorer defected")
     return render_template("login.html", title="Loggin' in", form=form, login=True)
 
 @app.route("/api")
