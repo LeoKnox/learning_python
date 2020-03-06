@@ -16,7 +16,7 @@ class CharacterForm(FlaskForm):
     ac          =   StringField("Armor Class", validators = [DataRequired()])
     submit      =   SubmitField("Login")
 
-    def validate_char_name(self,char_name):
-        character = Character.objects(char_name=char_name.data).first()
-        if character:
-            raise ValidationError("Name exists go forth and choose another.")
+    #def validate_char_name(self,char_name):
+    #    character = Character.objects(char_name=char_name.data).first()
+    #    if character:
+    #        raise ValidationError("Name exists go forth and choose another.")

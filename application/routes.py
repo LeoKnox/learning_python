@@ -26,8 +26,14 @@ def selection():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        flash("You are in!")
-        return redirect("/index")
+        login_name = form.charName.data
+        login_class = form.charClass.data
+        character = Character.objects(char_name = login_name).first()
+        if character and login_class == character.char_class:
+            flash(f"{character.char_name}, you are in!")
+            return redirect("/index")
+        else:
+            flash("There be errerrerrors!")
     return render_template("login.html", title="Loggin' in", form=form, login=True)
 
 @app.route("/api")
@@ -40,9 +46,22 @@ def api(idx=None):
 
     return Response(json.dumps(jdata), mimetype="/application/json")
 
-@app.route("/player")
+@app.route("/player", methods=["GET","POST"])
 def player():
-    #Character(char_id=1, char_name="Xingu", char_class="Figther",atk=12,ac=11).save()
-    #Character(char_id=2, char_name="Eveehi", char_class="Wizard",atk=12,ac=11).save()
-    players = Character.objects.all()
-    return render_template("player.html", players=players)
+    form = CharacterForm()
+    if form.validate_on_submit():
+    #players = Character.objects.all()
+        char_id = Character.objects.count()
+        char_id += 1
+
+        char_name   = form.char_name.data
+        char_class  = form.char_class.data
+        atk         = form.atk.data
+        ac          = form.ac.data
+
+        character = Character(char_id=char_id, char_class=char_class, atk=atk, ac=ac)
+        character.save()
+        flash("Go adventure!")
+        return redirect(url_for("index"))
+
+    return render_template("player.html", form=form) # add menu create=True

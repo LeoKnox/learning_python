@@ -3,13 +3,39 @@
 
 {% block context %}
     <div>
-        {% for player in players %}
-        <dl>
-            <dt>Character Name: {{ player.char_name }}</dt>
-            <dd>Character Class: {{ player.char_class }}</dd>
-        </dl>
-        {% else %}
-        <h3>No players go get some!</h3>
-        {% endfor %}
+        <form name="login" action="" method="post" novalidate>
+            {{ form.hidden_tag()}}
+            <p>
+                {{ form.char_name.label }}<br>
+                {{ form.char_name(size=35) }}
+                {% for error in form.char_name.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.char_class.label }}<br>
+                {{ form.char_class(size=35) }}
+                {% for error in form.char_class.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.atk.label }}<br>
+                {{ form.atk(size=35) }}
+                {% for error in form.atk.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.ac.label }}<br>
+                {{ form.ac(size=35) }}
+                {% for error in form.ac.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.submit() }}
+            </p>
+        </form>
     </div>
 {% endblock %}
